@@ -1,17 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 public class Main {
 
     public static void main(String[] args) {
-
+        System.out.println(fakeBin("918273645"));
 
     }
 
-    public static long stairsIn20(int[][] stairs) {
-        long stairsIn1 = 0;
-        for (int i = 0; i < stairs.length; i++) {
-            for (int j = 0; j < stairs[i].length; j++) {
-                stairsIn1 += stairs[i][j];
+    public static String fakeBin(String numberString) {
+        StringBuilder sb = new StringBuilder();
+
+        List<Character> numbersList = new ArrayList<>();
+        for (int i = 0; i < numberString.length(); i++) {
+            numbersList.add(numberString.charAt(i));
+            if (numbersList.get(i) >= '5') {
+                numbersList.set(i, '1');
+            } else if (numbersList.get(i) < '5') {
+                numbersList.set(i, '0');
             }
         }
-        return stairsIn1 * 20;
+        for (Character ch : numbersList) {
+            sb.append(ch);
+        }
+        return sb.toString();
     }
 }
